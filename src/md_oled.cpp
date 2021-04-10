@@ -73,7 +73,7 @@
       // Adapted from Adafruit_SSD1306
   //
   void md_oled::drawCircle(void)
-     {
+    {
       /*
         for (int16_t i=0; i<((SSD1306Wire*) _oled)->getHeight(); i+=2)
           {
