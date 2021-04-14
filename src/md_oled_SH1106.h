@@ -1,5 +1,5 @@
-#ifndef _MD_OLED_H_
-  #define _MD_OLED_H_
+#ifndef _MD_OLED_SH1106_H_
+  #define _MD_OLED_SH1106_H_
 
   #include <Arduino.h>
   #include <md_defines.h>
@@ -7,8 +7,8 @@
 
   //#ifdef USE_OLED
     #include <Wire.h>               // Only needed for Arduino 1.6.5 and earlier
-//    #include "SH1106Wire.h"        // legacy: #include "SSD1306.h"
-    #include <SSD1306Wire.h>        // legacy: #include "SSD1306.h"
+    #include "SH1106Wire.h"        // legacy: #include "SSD1306.h"
+//    #include <SSD1306Wire.h>        // legacy: #include "SSD1306.h"
 
                        //#include <U8g2lib.h>
     //#include <Draht.h>
@@ -55,7 +55,7 @@
 
     #define _MD_OLED_MAX_ROWS 6
     #define _MD_OLED_MAX_COLS 30
-    class md_oled_1306: public SSD1306Wire
+    class md_oled_1106: public SH1106Wire
     {
       private:
         msTimer  _clrT      = msTimer();
@@ -73,8 +73,8 @@
         uint8_t  _len       = 0;
 
       public:
-        md_oled_1306(uint8_t address, uint8_t sda, uint8_t scl, OLEDDISPLAY_GEOMETRY g)
-            : SSD1306Wire(address, sda, scl, g) {}
+        md_oled_1106(uint8_t address, uint8_t sda, uint8_t scl, OLEDDISPLAY_GEOMETRY g)
+            : SH1106Wire(address, sda, scl, g) {}
 
         bool begin(uint8_t cols, uint8_t rows);
         void clear();

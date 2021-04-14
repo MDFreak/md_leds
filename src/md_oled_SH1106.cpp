@@ -1,7 +1,7 @@
-#include "md_oled.h"
+#include "md_oled_SH1106.h"
 
-  // implementation class md_oled_1306
-  bool md_oled_1306::begin(uint8_t cols, uint8_t rows)
+  //
+  bool md_oled_1106::begin(uint8_t cols, uint8_t rows)
     {
         _rows = rows;
         _cols = cols;
@@ -29,14 +29,16 @@
       //oled1.setFont(ArialMT_Plain_10);
     }
 
-  void md_oled_1306::clear()
+  //
+  void md_oled_1106::clear()
     {
       this->connect();
       this->clear();
     }
 
 
-  bool md_oled_1306::wrText     (String msg, uint8_t col, uint8_t row, uint8_t len) // write to text area
+  //
+  bool md_oled_1106::wrText     (String msg, uint8_t col, uint8_t row, uint8_t len) // write to text area
     {
       if ((row > _rows) || (col > _cols))  return ISERR;
 
@@ -69,7 +71,8 @@
     }
 
       // Adapted from Adafruit_SSD1306
-  void md_oled_1306::drawCircle(void)
+  //
+  void md_oled_1106::drawCircle(void)
     {
       /*
         for (int16_t i=0; i<((SSD1306Wire*) _oled)->getHeight(); i+=2)
@@ -126,7 +129,8 @@
     }
 
 
-  void md_oled_1306::wrStatus   (String msg) // write status line
+  //
+  void md_oled_1106::wrStatus   (String msg) // write status line
     {
       this->connect();
       this->setTextAlignment(TEXT_ALIGN_LEFT);
@@ -145,7 +149,8 @@
                   //SOUTLN("' Statuszeile schreiben ");
       this->display();
     }
-  void md_oled_1306::wrStatus   (const char *msg)
+  //
+  void md_oled_1106::wrStatus   (const char *msg)
     {
       wrStatus((String) msg);
     }
@@ -207,7 +212,7 @@
         }
 
     #endif
-
+//
 /*
   void md_oled::drawStr    (u8g2_uint_t x, u8g2_uint_t y, const char *s)
     {
