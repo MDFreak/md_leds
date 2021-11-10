@@ -1,8 +1,8 @@
 {
-  "name": "md_leds",
+  "name": "md_oled",
   "version": "0.1.0",
   "description": "Personal library, that contains utilities of general purpose",
-  "keywords": "rgb_led, WS2812_matrix, WS2812_line",
+  "keywords": "oled",
   "repository":
   {
     "type": "git",
