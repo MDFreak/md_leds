@@ -12,77 +12,56 @@
     #include <Adafruit_NeoPixel.h>
 
     // --- 16 Bit color declarations
-      #define COL16_RGB   RGB
-      #define COL16_RBG   RBG
-      #define COL16_GRB   GRB
-      #define COL16_GBR   GBR
-      #define COL16_BRG   BRG
-      #define COL16_BGR   BGR
+      #define COL16_RGB            RGB
+      #define COL16_RBG            RBG
+      #define COL16_GRB            GRB
+      #define COL16_GBR            GBR
+      #define COL16_BRG            BRG
+      #define COL16_BGR            BGR
 
-      #define COL16_BLACK		0
+      #define COL16_BLACK		       0
 
-      #define COL16_RED_VERYLOW 	  (10 <<  11)
-      #define COL16_RED_LOW 		    (17 <<  11)
-      #define COL16_RED_MEDIUM 		  (24 << 11)
-      #define COL16_RED_HIGH 		    (31 << 11)
+      #define COL16_RED_VERYLOW 	 (10 <<  11)
+      #define COL16_RED_LOW 		   (17 <<  11)
+      #define COL16_RED_MEDIUM 		 (24 << 11)
+      #define COL16_RED_HIGH 		   (31 << 11)
 
-      #define COL16_GREEN_VERYLOW	  (20 <<  5)
-      #define COL16_GREEN_LOW 		  (34 << 5)
-      #define COL16_GREEN_MEDIUM 	  (48 << 5)
-      #define COL16_GREEN_HIGH 		  (63 << 5)
+      #define COL16_GREEN_VERYLOW	 (20 <<  5)
+      #define COL16_GREEN_LOW 		 (34 << 5)
+      #define COL16_GREEN_MEDIUM 	 (48 << 5)
+      #define COL16_GREEN_HIGH 		 (63 << 5)
 
-      #define COL16_BLUE_VERYLOW	  10
-      #define COL16_BLUE_LOW 		    17
-      #define COL16_BLUE_MEDIUM 	  24
-      #define COL16_BLUE_HIGH 		  31
+      #define COL16_BLUE_VERYLOW	 10
+      #define COL16_BLUE_LOW 		   17
+      #define COL16_BLUE_MEDIUM 	 24
+      #define COL16_BLUE_HIGH 		 31
 
-      #define COL16_YELLOW_VERYLOW  (COL16_RED_VERYLOW + COL16_GREEN_VERYLOW)
-      #define COL16_YELLOW_LOW      (COL16_RED_LOW     + COL16_GREEN_LOW)
-      #define COL16_YELLOW_Medium   (COL16_RED_MEDIUM  + COL16_GREEN_MEDIUM)
-      #define COL16_YELLOW_HIGH     (COL16_RED_HIGH    + COL16_GREEN_HIGH)
+      #define COL16_YELLOW_VERYLOW (COL16_RED_VERYLOW + COL16_GREEN_VERYLOW)
+      #define COL16_YELLOW_LOW     (COL16_RED_LOW     + COL16_GREEN_LOW)
+      #define COL16_YELLOW_Medium  (COL16_RED_MEDIUM  + COL16_GREEN_MEDIUM)
+      #define COL16_YELLOW_HIGH    (COL16_RED_HIGH    + COL16_GREEN_HIGH)
 
-      #define COL16_ORANGE_VERYLOW	(COL16_RED_VERYLOW + COL16_GREEN_VERYLOW)
-      #define COL16_ORANGE_LOW		  (COL16_RED_LOW     + COL16_GREEN_LOW)
-      #define COL16_ORANGE_MEDIUM	  (COL16_RED_MEDIUM  + COL16_GREEN_MEDIUM)
-      #define COL16_ORANGE_HIGH		  (COL16_RED_HIGH    + COL16_GREEN_HIGH)
+      #define COL16_ORANGE_VERYLOW (COL16_RED_VERYLOW + COL16_GREEN_VERYLOW)
+      #define COL16_ORANGE_LOW		 (COL16_RED_LOW     + COL16_GREEN_LOW)
+      #define COL16_ORANGE_MEDIUM	 (COL16_RED_MEDIUM  + COL16_GREEN_MEDIUM)
+      #define COL16_ORANGE_HIGH		 (COL16_RED_HIGH    + COL16_GREEN_HIGH)
 
-      #define COL16_PURPLE_VERYLOW	(COL16_RED_VERYLOW + COL16_BLUE_VERYLOW)
-      #define COL16_PURPLE_LOW		  (COL16_RED_LOW     + COL16_BLUE_LOW)
-      #define COL16_PURPLE_MEDIUM	  (COL16_RED_MEDIUM  + COL16_BLUE_MEDIUM)
-      #define COL16_PURPLE_HIGH		  (COL16_RED_HIGH    + COL16_BLUE_HIGH)
+      #define COL16_PURPLE_VERYLOW (COL16_RED_VERYLOW + COL16_BLUE_VERYLOW)
+      #define COL16_PURPLE_LOW		 (COL16_RED_LOW     + COL16_BLUE_LOW)
+      #define COL16_PURPLE_MEDIUM	 (COL16_RED_MEDIUM  + COL16_BLUE_MEDIUM)
+      #define COL16_PURPLE_HIGH		 (COL16_RED_HIGH    + COL16_BLUE_HIGH)
 
-      #define COL16_CYAN_VERYLOW	  (COL16_GREEN_VERYLOW + COL16_BLUE_VERYLOW)
-      #define COL16_CYAN_LOW		    (COL16_GREEN_LOW     + COL16_BLUE_LOW)
-      #define COL16_CYAN_MEDIUM		  (COL16_GREEN_MEDIUM  + COL16_BLUE_MEDIUM)
-      #define COL16_CYAN_HIGH		    (COL16_GREEN_HIGH    + COL16_BLUE_HIGH)
+      #define COL16_CYAN_VERYLOW	 (COL16_GREEN_VERYLOW + COL16_BLUE_VERYLOW)
+      #define COL16_CYAN_LOW		   (COL16_GREEN_LOW     + COL16_BLUE_LOW)
+      #define COL16_CYAN_MEDIUM		 (COL16_GREEN_MEDIUM  + COL16_BLUE_MEDIUM)
+      #define COL16_CYAN_HIGH		   (COL16_GREEN_HIGH    + COL16_BLUE_HIGH)
 
-      #define COL16_WHITE_VERYLOW	  (COL16_RED_VERYLOW + COL16_GREEN_VERYLOW + COL16_BLUE_VERYLOW)
-      #define COL16_WHITE_LOW		    (COL16_RED_LOW     + COL16_GREEN_LOW     + COL16_BLUE_LOW)
-      #define COL16_WHITE_MEDIUM	  (COL16_RED_MEDIUM  + COL16_GREEN_MEDIUM  + COL16_BLUE_MEDIUM)
-      #define COL16_WHITE_HIGH		  (COL16_RED_HIGH    + COL16_GREEN_HIGH    + COL16_BLUE_HIGH)
+      #define COL16_WHITE_VERYLOW	 (COL16_RED_VERYLOW + COL16_GREEN_VERYLOW + COL16_BLUE_VERYLOW)
+      #define COL16_WHITE_LOW		   (COL16_RED_LOW     + COL16_GREEN_LOW     + COL16_BLUE_LOW)
+      #define COL16_WHITE_MEDIUM	 (COL16_RED_MEDIUM  + COL16_GREEN_MEDIUM  + COL16_BLUE_MEDIUM)
+      #define COL16_WHITE_HIGH		 (COL16_RED_HIGH    + COL16_GREEN_HIGH    + COL16_BLUE_HIGH)
 
     // --- mono color bitmaps 8x8
-      typedef struct  // mono_col_bmp_t
-        {
-          int16_t  bmp_num; // -1 = no bmp
-          uint16_t col;     //  0 = don't change
-          uint8_t  bright;  //  0 = don't change
-        } mono_col_bmp_t;
-
-      typedef struct  // mono_col_txt_t
-        {
-          char*    text;    // NULL = no text
-          uint16_t col;     //  0 = don't change
-          uint8_t  bright;  //  0 = don't change
-        } mono_col_txt_t;
-
-      typedef struct
-        {
-          mono_col_bmp_t bmpB;
-          mono_col_txt_t text;
-          mono_col_bmp_t bmpE;
-        } scroll2812_t;
-
       enum // bitmaps
         {
           MD_BITMAP_BIN_AA55 = 0,
@@ -263,6 +242,113 @@
                 },
             };
     //
+  // --- class md_LEDPix24
+    #define LED_BLUE   0
+    #define LED_GREEN  1
+    #define LED_RED    2
+    #define LED_BRIGHT 3
+
+    class md_LEDPix24
+      {
+      private:
+        union
+          {
+            uint8_t  bytes[4];  // bright, red, green, blue
+            uint32_t dword;
+          } _LEDPix24;
+
+      public:
+        // Constructors
+          md_LEDPix24();
+          md_LEDPix24(uint8_t bright, uint8_t red, uint8_t green, uint8_t blue);
+          md_LEDPix24(uint32_t brgb24);
+          md_LEDPix24(const uint8_t *pbrgb24);
+          virtual ~md_LEDPix24() {}
+        // methodes
+          virtual bool   fromString(const char *LEDPixel);
+          virtual bool   fromString(const String &LEDPixel);
+          virtual String toString() const;
+          virtual size_t printTo(Print& p) const;
+          void     col24(uint32_t col);
+          uint32_t col24();
+          void     col16(uint32_t col);
+          uint32_t col16();
+          void     bright(uint8_t col);
+          uint8_t  bright();
+
+        //  Overloaded cast operator to allow  md_LEDPix24 objects
+         // to be used where a pointer to a four-byte uint8_t array is expected
+          operator uint32_t() const;
+          bool operator==(const md_LEDPix24& LEDPixel) const;
+          //bool operator==(const uint8_t* LEDPixel) const;
+         // Overloaded index operator to allow getting and setting individual octets of the LEDPixeless
+          uint8_t  operator[](int index) const;
+          uint8_t& operator[](int index);
+         // Overloaded copy operators to allow initialisation of IPAddress objects from other types
+          //md_LEDPix24& operator=(const uint8_t *LEDPixel);
+          //md_LEDPix24& operator=(uint32_t LEDPixel);
+      };
+
+    #ifdef UNUSED
+    class md_LEDPix16
+      {
+      private:
+          union
+            {
+              uint8_t  bytes[4];  // bright, 0 , col16 (5-6-5)
+              uint32_t dword;
+            } _LEDPix16;
+      public:
+        // Constructors
+          md_LEDPix16();
+          md_LEDPix16(uint8_t bright, uint8_t red, uint8_t green, uint8_t blue);
+          md_LEDPix16(uint32_t brgb16);
+          md_LEDPix16(const uint8_t *pbrgb16);
+          ~md_LEDPix16() {}
+        // methodes
+          bool     fromString(const char *LEDPixel);
+          bool     fromString(const String &LEDPixel);
+          String   toString() const;
+          size_t   printTo(Print& p) const;
+          void     col16(uint16_t col);
+          uint16_t col16();
+          void     bright(uint8_t col);
+          uint8_t  bright();
+
+        //  Overloaded cast operator to allow  md_LEDPix16 objects
+         // to be used where a pointer to a four-byte uint8_t array is expected
+          operator uint32_t() const;
+          bool operator==(const md_LEDPix16& LEDPixel) const;
+          //bool operator==(const uint8_t* LEDPixel) const;
+         // Overloaded index operator to allow getting and setting individual octets of the LEDPixeless
+          uint8_t  operator[](int index) const;
+          uint8_t& operator[](int index);
+         // Overloaded copy operators to allow initialisation of IPAddress objects from other types
+          //md_LEDPix16& operator=(const uint8_t *LEDPixel);
+          //md_LEDPix16& operator=(uint32_t LEDPixel);
+
+      };
+    #endif
+  // --- arbitrary structures
+      typedef struct // mono_col_bmp_t
+        {
+          int16_t      bmp_num; // -1 = no bmp
+          md_LEDPix24* pix24 = new (md_LEDPix24);   // bright, red green, blue
+        } mono_col_bmp_t;
+
+      typedef struct  // mono_col_txt_t
+        {
+          char*        text;       // NULL = no text
+          md_LEDPix24* pix24 = new (md_LEDPix24);   // bright, red green, blue
+        } mono_col_txt_t;
+
+      typedef struct  // scroll2812_t
+        {
+          mono_col_bmp_t* bmpB = new(mono_col_bmp_t);
+          mono_col_txt_t* text = new(mono_col_txt_t);
+          mono_col_bmp_t* bmpE = new(mono_col_bmp_t);
+        } scroll2812_t;
+
   // --- class md_ws2812_matrix
     class md_ws2812_matrix
       {
@@ -275,8 +361,13 @@
                            neoPixelType ledType = NEO_GRB + NEO_KHZ800);
 
           void begin(bool doSetup = true);
-          void clear() { _pMatrix->clear(); }
-
+          void clear()                   { _pMatrix->clear(); }
+          void setBright(uint8_t bright) { if (_scrOut != NULL)
+                                             { _scrOut->bmpB->pix24[LED_BRIGHT] = bright;
+                                               _scrOut->text->pix24[LED_BRIGHT] = bright;
+                                               _scrOut->bmpE->pix24[LED_BRIGHT] = bright;
+                                             }
+                                         };
             // Convert a BGR 4/4/4 bitmap to RGB 5/6/5 used by Adafruit_GFX
           void fixdrawRGBBitmap(int16_t x, int16_t y, const uint16_t *bitmap, int16_t w, int16_t h);
             // In a case of a tile of neomatrices, this test is helpful to make sure that the
@@ -293,7 +384,7 @@
           void display_resolution();
           //void start_scroll_task(scroll2812_t* out, int16_t* pos, uint64_t updateT_us = 500000u);
           //void scroll_matrix(bool startup = false);
-          void start_scroll_matrix(scroll2812_t* out, int16_t* xpos, int16_t xlast);
+          void start_scroll_matrix(scroll2812_t* out, int16_t* xpos = NULL, int16_t xlast = NU);
           void scroll_matrix(bool startup = false);
           void scroll_colorLine(bool startup = false);
           //void display_scroll(uint8_t anzBM_front, char* ptext, uint8_t anzBM_end, uint8_t brightness = 10);
@@ -311,4 +402,21 @@
           int16_t             _lsize;
 
       };
+
+  // --- functions
+    // --- getCol16 -- returns 16-Bit color
+      uint16_t Col16(uint8_t red, uint8_t green, uint8_t blue);
+      uint32_t Col24(uint8_t red, uint8_t green, uint8_t blue);
+      uint16_t Col16(uint32_t col24);
+      uint32_t Col24(uint16_t col16);
+      uint8_t  Red16(uint16_t col16);
+      uint8_t  Red  (uint32_t col16);
+      uint8_t  Red  (uint32_t col24);
+      uint8_t  Green(uint32_t col16);
+      uint8_t  Green(uint32_t col24);
+      uint8_t  Blue (uint32_t col16);
+      uint8_t  Blue (uint32_t col24);
+      uint8_t  Bright_x_Col(uint8_t bright, uint8_t col);
+      uint32_t Bright_x_Col(uint8_t bright, uint32_t col);
+
 #endif // _MD_LEDS_H_
