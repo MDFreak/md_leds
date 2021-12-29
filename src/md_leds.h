@@ -248,14 +248,16 @@
     #define LED_RED    2
     #define LED_BRIGHT 3
 
+    typedef union
+      {
+        uint8_t  bytes[4];  // bright, red, green, blue
+        uint32_t dword;
+      } LEDPix24;
+
     class md_LEDPix24
       {
       private:
-        union
-          {
-            uint8_t  bytes[4];  // bright, red, green, blue
-            uint32_t dword;
-          } _LEDPix24;
+        LEDPix24 _LEDPix24;
 
       public:
         // Constructors
@@ -268,7 +270,6 @@
           virtual bool   fromString(const char *LEDPixel);
           virtual bool   fromString(const String &LEDPixel);
           virtual String toString() const;
-          virtual size_t printTo(Print& p) const;
           void     col24(uint32_t col);
           uint32_t col24();
           void     col16(uint32_t col);
@@ -418,5 +419,6 @@
       uint8_t  Blue (uint32_t col24);
       uint8_t  Bright_x_Col(uint8_t bright, uint8_t col);
       uint32_t Bright_x_Col(uint8_t bright, uint32_t col);
+      size_t   colToHexStr (char* p, uint32_t col);
 
 #endif // _MD_LEDS_H_

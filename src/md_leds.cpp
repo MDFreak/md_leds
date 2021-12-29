@@ -110,6 +110,15 @@
         return (uint8_t) tmp;
       }
 
+    size_t   colToHexStr(char* p, uint32_t col)
+      {
+        sprintf(p, "%02x%02x%02x", Red(col), Green(col), Blue(col));
+        p[6] = 0;
+        SOUT(" colToHexStr HEX '"); SOUTHEX(col);
+        SOUT("' STR '"); SOUT(p); SOUTLN("'");
+        return 6;
+      }
+
 #ifdef XXXX
   void startrunText2812Task()
     {
@@ -190,18 +199,6 @@
         //        _LEDPix24.dword = LEDPixel;
         //        return *this;
         //      }
-    size_t       md_LEDPix24::printTo(Print& p) const
-      {
-          size_t n = 0;
-          for(int i = 0; i < 3; i++)
-            {
-                n += p.print(_LEDPix24.bytes[i], DEC);
-                n += p.print('.');
-            }
-          n += p.print(_LEDPix24.bytes[3], DEC);
-          return n;
-      }
-
     String       md_LEDPix24::toString() const
       {
           char szRet[16];
@@ -739,7 +736,7 @@
             taskT_us   = updateT_us;
           }
 #endif
-    //void md_ws2812_matrix::scroll_matrix(bool startup)
+    //void md_ws2812_matrix::scroll_matrix(bool startup),
     void md_ws2812_matrix::start_scroll_matrix(scroll2812_t* out, int16_t* xpos, int16_t xlast)
       {
         _scrOut = out;
@@ -765,45 +762,39 @@
         _pMatrix->setTextSize(1);
         _pMatrix->setRotation(0); //
 
-        //for (x=_mtW+2*bitmw ; x>=-(tlen + 4*bitmw - lettw); x--)
-        //  {
-        // delete old output
+            //for (x=_mtW+2*bitmw ; x>=-(tlen + 4*bitmw - lettw); x--)
+            //  {
+            // delete old output
             //SOUT(" clear ");
         _pMatrix->clear();
+       	_pMatrix->setTextColor(_scrOut->text->pix24->col16());
 
         if (_scrOut->bmpB->bmp_num > NU)
           {
-            //SOUTLN(); SOUT(" drawBitmapB "); SOUT(" bright "); SOUT(_scrOut->bmpB->pix24->bright());
-            //SOUT(" col "); SOUTLN(_scrOut->bmpB->pix24->col16());
-            _pMatrix->setBrightness(_scrOut->text->pix24->bright());
-            //usleep(100);
-            _pMatrix->setTextColor(_scrOut->bmpB->pix24->col16());
-            //usleep(100);
+            _pMatrix->setBrightness(_scrOut->bmpB->pix24->bright());
+              //usleep(1000);
+              //_pMatrix->setTextColor(_scrOut->bmpB->pix24->col16());
+              //usleep(100);
             _pMatrix->drawBitmap(x-bitmw-1, 0, mono_bmp[_scrOut->bmpB->bmp_num], 8, 8, _scrOut->bmpB->pix24->col16());
           }
 
       	if (_scrOut->text->text != NULL)
           {
-            //SOUTLN(); SOUT(" drawText ");
-            //SOUT(" bright "); SOUT(_scrOut->text.pix24.bright());
-            //SOUT(" col "); SOUTLN(_scrOut->text.pix24.col16());
             _pMatrix->setBrightness(_scrOut->text->pix24->bright());
-            //usleep(100);
-          	_pMatrix->setTextColor(_scrOut->text->pix24->col16());
-            //usleep(100);
+              //usleep(1000);
+          	  //_pMatrix->setTextColor(_scrOut->text->pix24->col16());
+              //usleep(1000);
             _pMatrix->setCursor(x,0);
           	_pMatrix->print(_scrOut->text->text);
-            //SOUT("scroll_matrix ... x="); SOUT((x));
+                //SOUT("scroll_matrix ... x="); SOUT((x));
           }
 
         if (_scrOut->bmpE->bmp_num > NU)
           {
-            //SOUTLN(); SOUT(" drawBitmapE "); SOUT(" bright "); SOUT(_scrOut->bmpE.pix24.bright());
-            //SOUT(" col "); SOUTLN(_scrOut->bmpE.pix24.col16());
-            _pMatrix->setBrightness(_scrOut->text->pix24->bright());
-            usleep(100);
-            _pMatrix->setTextColor(_scrOut->bmpE->pix24->col16());
-            usleep(100);
+            _pMatrix->setBrightness(_scrOut->bmpE->pix24->bright());
+              //usleep(1000);
+              //_pMatrix->setTextColor(_scrOut->bmpE->pix24->col16());
+              //usleep(100);
             _pMatrix->drawBitmap(x+tlen, 0, mono_bmp[_scrOut->bmpE->bmp_num], 8, 8, _scrOut->bmpE->pix24->col16());
           }
             //SOUT(" md_leds.show ");
@@ -811,7 +802,7 @@
             //SOUTLN(" ready ");
           //}
           //          if ( x < -(tlen + 2*bitmw - lettw))
-          _pMatrix->setBrightness(_scrOut->text->pix24->bright());
+        _pMatrix->setBrightness(_scrOut->text->pix24->bright());
         if ( --x < _minPos)
           {
             x=_maxPos;
